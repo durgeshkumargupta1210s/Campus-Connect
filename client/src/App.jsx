@@ -1,33 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import Navbar from './components/Navbar'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
+import Events from './pages/Events'
+import EventsDetails from './pages/EventsDetails'
+import SeatLayout from './pages/SeatLayout'
+import MyBookings from './pages/MyBookings'
+import Favorite from './pages/Favorite'
+import {Toaster} from 'react-hot-toast'
+import Footer from './components/Footer'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // checking admin route
+  const isAdminRoute=useLocation().pathname.startsWith('/admin')
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    {/* for notification */}
+    <Toaster/>
+    {/* navbar already made in components and only see when  you are not on admin route means you are on user route */}
+    {!isAdminRoute && <Navbar/>}
+      {/* crating routes for different pages */}
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/events' element={<Events/>}/>
+        <Route path='/events/:id' element={<EventsDetails/>}/>
+        <Route path='/events/:id/:date' element={<SeatLayout/>}/>
+        <Route path='/my-booking' element={<MyBookings/>}/>
+        <Route path='/favorite' element={<Favorite/>}/>
+
+      </Routes>
+      {/* same as it will also not show when admin path */}
+       {!isAdminRoute && <Footer/>}
+
+
+
     </>
   )
 }
