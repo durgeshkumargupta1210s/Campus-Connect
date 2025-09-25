@@ -10,6 +10,7 @@ const FeatureSection = () => {
 
   return (
     <div className="relative px-6 md:px-16 lg:px-24 xl:px-44 overflow-hidden">
+
       {/* Decorative Circle */}
       <BlueCircle top="0px" right="-80px" />
 
@@ -25,12 +26,14 @@ const FeatureSection = () => {
         </button>
       </div>
 
+
       {/* Event Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
         {dummyShowsData.slice(0,4).map((show) => (
           <MovieCard key={show._id} event={show} />
         ))}
-      </div>
+      </div> 
+
 
       {/* Show More Button */}
       <div className="flex justify-center mt-20">
@@ -41,6 +44,8 @@ const FeatureSection = () => {
           Show more
         </button>
       </div>
+
+      
     </div>
   )
 }

@@ -41,15 +41,14 @@ const Navbar = () => {
         <XIcon
           className="md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer"
           aria-label="Close menu"
-          onClick={() => setIsOpen(false)} // Close the mobile menu
+          onClick={() => setIsOpen(!isOpen)} // Close the mobile menu
         />
 
         {/* Navigation links - close menu on click */}
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/">
           Home
         </Link>
-        <Link onClick={() =>{scrollTo(0,0); setIsOpen(false)}} 
-        to="/events">
+        <Link onClick={() =>{scrollTo(0,0); setIsOpen(false)}} to="/events">
           Events
         </Link>
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/seats">
@@ -80,22 +79,25 @@ const Navbar = () => {
           // If logged in -> show Clerk user profile button
           <UserButton>
             <UserButton.MenuItems>
+
               {/* ✅ FIXED: `onClick` must be lowercase */}
               <UserButton.Action
                 label="My Bookings"
                 labelIcon={<TicketPlus width={15} />}
                 onClick={() => navigate("/my-booking")}
               />
+              
             </UserButton.MenuItems>
           </UserButton>
         )}
       </div>
 
+
       {/* Hamburger menu icon (only on mobile) */}
       <MenuIcon
         className="max-md:ml-4 md:hidden w-8 h-8 cursor-pointer"
         aria-label="Open menu"
-        onClick={() => setIsOpen(true)} // Opens mobile menu
+        onClick={() => setIsOpen(!isOpen)} // Opens mobile menu
       />
     </div>
   );

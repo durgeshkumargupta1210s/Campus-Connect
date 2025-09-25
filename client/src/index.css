@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+/* provide theme  */
 @theme{
     --color-primary: #F84565 ;
     --color-primary-dull: #D63854 ;
 }
 
+/* apply to all */
 *{
     font-family: "Outfit", sans-serif;
     scrollbar-width:thin;
@@ -16,4 +18,9 @@
 body{
     color: white;
     background-color: #09090B;
+}
+
+
+.no-scrollbar{
+    scrollbar-width: none;
 }

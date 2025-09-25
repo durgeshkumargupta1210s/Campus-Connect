@@ -1,9 +1,12 @@
-import logo from './logo.png'
+import logo from './camlogo.png'
 import marvelLogo from './marvelLogo.svg'
 import googlePlay from './googlePlay.svg'
 import appStore from './appStore.svg'
 import screenImage from './screenImage.svg'
 import profile from './profile.png'
+// import dandiyaImage from './dandiya_night.jpeg';
+// import dandiyaVideo from './dandiya_night.mp4';
+
 
 export const assets = {
     logo,
@@ -19,6 +22,10 @@ export const dummyTrailers = [
         image: "https://img.youtube.com/vi/WpW36ldAqnM/maxresdefault.jpg",
         videoUrl: 'https://www.youtube.com/watch?v=WpW36ldAqnM'
     },
+    // {
+    //     image: dandiyaImage,
+    //     videoUrl: dandiyaVideo,
+    // },
     {
         image: "https://img.youtube.com/vi/-sAOWhvheK8/maxresdefault.jpg",
         videoUrl: 'https://www.youtube.com/watch?v=-sAOWhvheK8'
