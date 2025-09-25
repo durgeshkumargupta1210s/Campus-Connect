@@ -45,19 +45,19 @@ const Navbar = () => {
         />
 
         {/* Navigation links - close menu on click */}
-        <Link onClick={() => setIsOpen(false)} to="/">
+        <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/">
           Home
         </Link>
-        <Link onClick={() => setIsOpen(false)} to="/movies">
-          Movies
+        <Link onClick={() =>{scrollTo(0,0); setIsOpen(false)}} to="/events">
+          Events
         </Link>
-        <Link onClick={() => setIsOpen(false)} to="/theaters">
-          Theaters
+        <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/seats">
+          Seats
         </Link>
-        <Link onClick={() => setIsOpen(false)} to="/releases">
+        <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/releases">
           Releases
         </Link>
-        <Link onClick={() => setIsOpen(false)} to="/favorite">
+        <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/favorite">
           Favorites
         </Link>
       </div>
