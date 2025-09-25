@@ -16,9 +16,9 @@ const App = () => {
 
   return (
     <>
-    {/* for notification */}
+    {/* for notifications,react-hot-toast */}
     <Toaster/>
-    {/* navbar already made in components and only see when  you are not on admin route means you are on user route */}
+    {/* navbar already made in components and only see when you are not on admin route means you are on user route */}
     {!isAdminRoute && <Navbar/>}
       {/* crating routes for different pages */}
       <Routes>
@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/events' element={<Events/>}/>
         <Route path='/events/:id' element={<EventsDetails/>}/>
         <Route path='/events/:id/:date' element={<SeatLayout/>}/>
-        <Route path='/my-booking' element={<MyBookings/>}/>
+        <Route path='/my-bookings' element={<MyBookings/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
 
       </Routes>

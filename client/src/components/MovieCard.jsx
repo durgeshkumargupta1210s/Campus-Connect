@@ -33,6 +33,7 @@ const MovieCard = ({ event }) => {
       </p>
 
       {/* Actions */}
+      {/* button for buying tickets */}
       <div className="flex items-center justify-between mt-4 pb-2">
         <button
           onClick={() => {
@@ -45,6 +46,7 @@ const MovieCard = ({ event }) => {
           Buy Tickets
         </button>
 
+          {/* Star Rating */}
         <p className="flex items-center gap-1 text-sm text-gray-400 pr-1">
           <StarIcon className="w-4 h-4 text-primary fill-primary" />
           {event.vote_average ? event.vote_average.toFixed(1) : "N/A"}
