@@ -5,7 +5,7 @@ import { MenuIcon, SearchIcon, TicketPlus, XIcon } from "lucide-react"; // Icons
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react"; // Clerk authentication
 
 const Navbar = () => {
-  // State to control mobile menu open/close
+  // State to control mobile menu(on small screen) open/close, menu is hidden
   const [isOpen, setIsOpen] = useState(false);
 
   // Clerk hooks: user info & sign-in function
@@ -48,7 +48,8 @@ const Navbar = () => {
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/">
           Home
         </Link>
-        <Link onClick={() =>{scrollTo(0,0); setIsOpen(false)}} to="/events">
+        <Link onClick={() =>{scrollTo(0,0); setIsOpen(false)}} 
+        to="/events">
           Events
         </Link>
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/seats">
