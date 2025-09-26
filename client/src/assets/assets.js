@@ -4,12 +4,14 @@ import googlePlay from './googlePlay.svg'
 import appStore from './appStore.svg'
 import screenImage from './screenImage.svg'
 import profile from './profile.png'
+import new_logo from './new_logo.png'
 // import dandiyaImage from './dandiya_night.jpeg';
 // import dandiyaVideo from './dandiya_night.mp4';
 
 
 export const assets = {
     logo,
+    new_logo,
     marvelLogo,
     googlePlay,
     appStore,

@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className="fixed top-0 left-0 z-50 w-full flex items-center justify-between px-6 md:px-16 lg:px-36 py-5 bg-transparent">
       {/* Logo on the left - redirects to home */}
       <Link to="/" className="max-md:flex-1">
-        <img src={assets.logo} alt="Logo" className="w-36 h-auto" />
+        <img src={assets.new_logo} alt="Logo" className="w-36 h-auto" />
       </Link>
 
       {/* Navigation links container */}
