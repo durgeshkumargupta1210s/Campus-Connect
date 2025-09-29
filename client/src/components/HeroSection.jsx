@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
     const navigate=useNavigate();
   return (
-    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("/background2.png")] bg-cover bg-center h-screen'>
+    <div className='flex flex-col items-start justify-center gap-4 px-6 md:px-16 lg:px-36 bg-[url("/image.png")] bg-cover bg-center h-screen'>
       <img
         src="/marvelLogo.svg"
         alt="Marvel Logo"
