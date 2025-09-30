@@ -4,6 +4,7 @@ import googlePlay from './googlePlay.svg'
 import appStore from './appStore.svg'
 import screenImage from './screenImage.svg'
 import profile from './profile.png'
+
 import icon from './icon.png'
 // import dandiyaImage from './dandiya_night.jpeg';
 // import dandiyaVideo from './dandiya_night.mp4';
@@ -15,7 +16,8 @@ export const assets = {
     googlePlay,
     appStore,
     screenImage,
-    profile
+    profile,
+    // logo1
 }
 
 export const dummyTrailers = [
