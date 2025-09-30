@@ -12,15 +12,10 @@ const MovieCard = ({ event }) => {
                  hover:-translate-y-1 transition duration-300 w-[264px]"
     >
       {/* Poster */}
-      <img
-        onClick={() => {
-          navigate(`/events/${event._id}`);
-          window.scrollTo(0, 0);
-        }}
-        src={event.backdrop_path}
-        alt={event.title}
-        className="rounded-lg h-52 w-full object-cover object-center cursor-pointer"
-      />
+      <div onClick={() => navigate(`/events/${event._id}`)} className="cursor-pointer">
+        <img src={event.poster_path} alt={event.title} />
+        <h2>{event.title}</h2>
+      </div>
 
       {/* Title */}
       <p className="font-semibold mt-2 truncate">{event.title}</p>
