@@ -6,9 +6,6 @@ import screenImage from './screenImage.svg'
 import profile from './profile.png'
 
 import icon from './icon.png'
-// import dandiyaImage from './dandiya_night.jpeg';
-// import dandiyaVideo from './dandiya_night.mp4';
-
 
 export const assets = {
     logo,
@@ -20,28 +17,27 @@ export const assets = {
     // logo1
 }
 
+// ../assets/assets.js
+
 export const dummyTrailers = [
-    {
-        image: "https://img.youtube.com/vi/WpW36ldAqnM/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=WpW36ldAqnM'
+    { // poetry
+        image: "https://res.cloudinary.com/dx8ugabre/image/upload/poetry_thumb_owq2pn.png",
+        videoUrl: 'https://res.cloudinary.com/dx8ugabre/video/upload/Poetry_Competition_Video_jpoeuj.mp4'
     },
-    // {
-    //     image: dandiyaImage,
-    //     videoUrl: dandiyaVideo,
-    // },
-    {
-        image: "https://img.youtube.com/vi/-sAOWhvheK8/maxresdefault.jpg",
-        videoUrl: 'https://youtu.be/MP1WIwf6SGs'
+    { // standup comedy
+        image: "https://res.cloudinary.com/dx8ugabre/image/upload/standup_thumb_i6cyv8.png",
+        videoUrl: 'https://res.cloudinary.com/dx8ugabre/video/upload/Standup_Comedy_uectlq.mp4'
     },
-    {
-        image: "https://img.youtube.com/vi/1pHDWnXmK7Y/maxresdefault.jpg",
-        videoUrl: 'https://youtu.be/K--7lF5cn6s'
+    { // dj night
+        image: "https://res.cloudinary.com/dx8ugabre/image/upload/dj_thumb_aqenri.png",
+        videoUrl: 'https://res.cloudinary.com/dx8ugabre/video/upload/DJ_Night_Video_hkvt8t.mp4'
     },
-    {
-        image: "https://img.youtube.com/vi/umiKiW4En9g/maxresdefault.jpg",
-        videoUrl: 'https://www.youtube.com/watch?v=umiKiW4En9g'
+    { // dandiya night
+        image: "https://res.cloudinary.com/dx8ugabre/image/upload/dandiya_thumbnail_dgrgil.png",
+        videoUrl: 'https://res.cloudinary.com/dx8ugabre/video/upload/Dandiya_Night_Video_azexuh.mp4'
     },
 ]
+
 
 const dummyCastsData = [
     { "name": "Milla Jovovich", "profile_path": "https://image.tmdb.org/t/p/original/usWnHCzbADijULREZYSJ0qfM00y.jpg", },

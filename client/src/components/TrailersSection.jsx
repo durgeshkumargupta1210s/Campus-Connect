@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
+
 import BlueCircle from "./BlueCircle";
 import { dummyTrailers } from "../assets/assets";
 import { PlayCircleIcon } from "lucide-react";
@@ -25,7 +26,7 @@ const TrailersSection = () => {
           <ReactPlayer
             key={currentTrailer.videoUrl}
             url={currentTrailer.videoUrl}
-            playing={true}
+            //playing={true}
             muted={true}
             controls={true}
             width="960px"
