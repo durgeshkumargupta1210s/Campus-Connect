@@ -9,6 +9,11 @@ import MyBookings from './pages/MyBookings'
 import Favorite from './pages/Favorite'
 import {Toaster} from 'react-hot-toast'
 import Footer from './components/Footer'
+import { Layout } from 'lucide-react'
+import Dashboard from './pages/admin/Dashboard'
+import AddEvents from './pages/admin/AddEvents'
+import ListEvents from './pages/admin/ListEvents'
+import ListBookings from './pages/admin/ListBookings'
 
 const App = () => {
   // checking admin route
@@ -28,6 +33,11 @@ const App = () => {
         <Route path='/events/:id/:date' element={<SeatLayout/>}/>
         <Route path='/my-bookings' element={<MyBookings/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
+        <Route path='/admin/*' element={<Layout/>}/>
+        <Route index element={<Dashboard/>}/>
+        <Route path='add-events'  element={<AddEvents/>}/>
+        <Route path='list-events' element={<ListEvents/>}/>
+        <Route path='list-bookings' element={<ListBookings/>}/>
 
       </Routes>
       {/* same as it will also not show when admin path */}
