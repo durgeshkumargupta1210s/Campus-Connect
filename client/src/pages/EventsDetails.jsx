@@ -78,7 +78,9 @@ const EventsDetails = () => {
         </div>
       </div>
 
-      <p className='text-lg font-medium mt-20'>Your favorite Cast</p>
+      {/* I have commented it as it shows cast that is not needed in events */}
+
+      {/* <p className='text-lg font-medium mt-20'>Your favorite Cast</p>
       <div className='overflow-x-auto no-scrollbar mt-8 pb-4'>
         <div className='flex items-center gap-4 w-max px-4'>
           {show.event.casts.slice(0,12).map((cast,index)=>(
@@ -89,7 +91,7 @@ const EventsDetails = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <DateSelect dateTime={show.dateTime} id={id}/>
 

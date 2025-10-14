@@ -55,7 +55,7 @@ const Navbar = () => {
           Seats
         </Link>
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/releases">
-          Releases
+          Upcoming
         </Link>
         <Link onClick={() => {scrollTo(0,0); setIsOpen(false)}} to="/favorite">
           Favorites

@@ -141,7 +141,7 @@ const SeatLayout = () => {
 
         {/* Proceed Button */}
         <button
-          onClick={handleProceed}
+          onClick={()=> navigate('/my-bookings')}
           className="mt-10 bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/80 transition flex items-center gap-2"
         >
           Proceed to Checkout ({selectedSeats.length} Seat
