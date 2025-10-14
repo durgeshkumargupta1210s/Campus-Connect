@@ -22,7 +22,7 @@ const Dashboard = () => {
         { title: "Total Bookings", value: dashboardData.totalBookings || "0", icon: ChartLineIcon },
         { title: "Total Revenue", value: `${currency} ${dashboardData.totalRevenue.toLocaleString()}` || "0", icon: CircleDollarSignIcon },
         {
-            title: "Active Shows",
+            title: "Active Events",
             // ✅ Changed to get the count from 'activeShows.length'
             value: dashboardData.activeShows?.length || "0",
             icon: PlayCircleIcon
@@ -58,7 +58,7 @@ const Dashboard = () => {
             </div>
 
             {/* ✅ Changed heading to 'Active Shows' */}
-            <p className="mt-10 text-lg font-medium">Active Shows</p>
+            <p className="mt-10 text-lg font-medium">Active Events</p>
             <div className="relative flex flex-wrap gap-6 mt-4 max-w-5xl">
                 <BlueCircle top="-100px" left="-10%" />
                 {/* ✅ Changed map to iterate over 'activeShows' and renamed variable to 'show' */}
