@@ -27,7 +27,7 @@ const ListBookings = () => {
           <thead>
           <tr className="bg-primary/20 text-left text-white">
           <th className="p-2 font-medium pl-5">User Name</th>
-          <th className="p-2 font-medium">Movie Name</th>
+          <th className="p-2 font-medium">Event Name</th>
           <th className="p-2 font-medium">Show Time</th>
           <th className="p-2 font-medium">Seats</th>
           <th className="p-2 font-medium">Amount</th>
