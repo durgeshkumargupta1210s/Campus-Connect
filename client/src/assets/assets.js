@@ -1,4 +1,4 @@
-import logo from './camlogo.png'
+import logo from './logo.png'
 import marvelLogo from './marvelLogo.svg'
 import googlePlay from './googlePlay.svg'
 import appStore from './appStore.svg'
