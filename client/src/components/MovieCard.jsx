@@ -14,7 +14,7 @@ const MovieCard = ({ event }) => {
       {/* Poster */}
       <div onClick={() => navigate(`/events/${event._id}`)} className="cursor-pointer">
         <img src={event.poster_path} alt={event.title} />
-        <h2>{event.title}</h2>
+        {/* <h2>{event.title}</h2> */}
       </div>
 
       {/* Title */}
