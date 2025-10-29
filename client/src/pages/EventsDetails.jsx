@@ -7,7 +7,7 @@ import Header from '../components/Navbar';
 import Footer from '../components/Footer'
 import BlueCircle from '../components/BlueCircle';
 import DateSelect from '../components/DateSelect'
-import MovieCard from '../components/MovieCard'
+import EventCard from '../components/EventCard'
 import Loading from '../components/Loading'
 
 
@@ -32,6 +32,7 @@ const EventsDetails = () => {
   useEffect(()=>{
     getShow()
   },[id])
+
 
   // useEffect(() => {
   //   const foundShow = dummyShowsData.find((s) => s._id.toString() === id);
@@ -98,7 +99,7 @@ const EventsDetails = () => {
       <p className='text-lg font-medium mt-20 mb-8'>You May Also Like</p>
       <div className='flex flex-wrap max-sm:justify-center gap-8'>
         {dummyShowsData.slice(0,4).map((event,index)=>(
-          <MovieCard key={index} event={event}/>
+          <EventCard key={index} event={event}/>
         ))}
       </div>
       <div className='flex justify-center mt-20'>

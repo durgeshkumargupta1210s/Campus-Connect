@@ -1,4 +1,7 @@
+/* to import google font */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* to import tailwindcss */
 @import "tailwindcss";
 
 /* provide theme  */
