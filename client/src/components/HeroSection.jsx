@@ -37,7 +37,7 @@ const HeroSection = () => {
       </p>
       <button onClick={()=>navigate('/events')} className="flex items-center gap-1 px-6 py-3 text-sm bg-primary hover:big-primary-dull transition rounded-full font-medium cursor-pointer">
         Explore Events
-        <ArrowRight className="w-5 h-5" />
+        <ArrowRight />
       </button>
     </div>
   );

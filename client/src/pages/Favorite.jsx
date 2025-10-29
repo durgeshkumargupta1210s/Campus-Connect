@@ -1,6 +1,6 @@
 import React from 'react'
 import { dummyShowsData } from '../assets/assets' 
-import EventCard from '../components/EventCard'
+import MovieCard from '../components/MovieCard'
 import BlueCircle from '../components/BlueCircle'
 
 const Favorite = () => {
@@ -12,7 +12,7 @@ const Favorite = () => {
         <h1 className='text-lg font-medium my-4'>Your Favorite Events: </h1>
         <div className='flex flex-wrap max-sm:justify-center gap-8'>
         {dummyShowsData.map((event)=>(
-          <EventCard event={event} key={event._id}/>
+          <MovieCard event={event} key={event._id}/>
         ))}
       </div>
     </div>

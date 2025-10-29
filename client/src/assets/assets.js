@@ -212,7 +212,7 @@ export const dummyDashboardData = {
     "activeShows": [
         {
             "_id": "68352363e96d99513e4221a4",
-            "event": dummyShowsData[0],
+            "movie": dummyShowsData[0],
             "showDateTime": "2025-06-30T02:30:00.000Z",
             "showPrice": 59,
             "occupiedSeats": {
@@ -223,21 +223,21 @@ export const dummyDashboardData = {
         },
         {
             "_id": "6835238fe96d99513e4221a8",
-            "event": dummyShowsData[1],
+            "movie": dummyShowsData[1],
             "showDateTime": "2025-06-30T15:30:00.000Z",
             "showPrice": 81,
             "occupiedSeats": {},
         },
         {
             "_id": "6835238fe96d99513e4221a9",
-            "event": dummyShowsData[2],
+            "movie": dummyShowsData[2],
             "showDateTime": "2025-06-30T03:30:00.000Z",
             "showPrice": 81,
             "occupiedSeats": {},
         },
         {
             "_id": "6835238fe96d99513e4221aa",
-            "event": dummyShowsData[3],
+            "movie": dummyShowsData[3],
             "showDateTime": "2025-07-15T16:30:00.000Z",
             "showPrice": 81,
             "occupiedSeats": {
@@ -249,7 +249,7 @@ export const dummyDashboardData = {
         },
         {
             "_id": "683682072b5989c29fc6dc0d",
-            "event": dummyShowsData[4],
+            "movie": dummyShowsData[4],
             "showDateTime": "2025-06-05T15:30:00.000Z",
             "showPrice": 49,
             "occupiedSeats": {
@@ -264,7 +264,7 @@ export const dummyDashboardData = {
         },
         {
             "_id": "68380044686d454f2116b39a",
-            "event": dummyShowsData[5],
+            "movie": dummyShowsData[5],
             "showDateTime": "2025-06-20T16:00:00.000Z",
             "showPrice": 79,
             "occupiedSeats": {

@@ -15,7 +15,7 @@ import MyBookings from './pages/MyBookings'
 import Favorite from './pages/Favorite'
 
 // Import Admin Layout & Pages
-// This is the corrected import for your admin layout
+// ✅ This is the corrected import for your admin layout
 import AdminLayout from './pages/admin/Layout'
 import Dashboard from './pages/admin/Dashboard'
 import AddEvents from './pages/admin/AddEvents'
@@ -45,7 +45,7 @@ const App = () => {
         <Route path='/my-bookings' element={<MyBookings />} />
         <Route path='/favorite' element={<Favorite />} />
 
-        {/* Admin Routes are now correctly nested inside the AdminLayout */}
+        {/* ✅ Admin Routes are now correctly nested inside the AdminLayout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="add-events" element={<AddEvents />} />

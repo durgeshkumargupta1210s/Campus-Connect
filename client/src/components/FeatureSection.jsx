@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import BlueCircle from './BlueCircle'
 import { dummyShowsData } from '../assets/assets'
-import EventCard from './EventCard'
+import MovieCard from './MovieCard'
 
 const FeatureSection = () => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const FeatureSection = () => {
       {/* Event Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
         {dummyShowsData.slice(0,4).map((show) => (
-          <EventCard key={show._id} event={show} />
+          <MovieCard key={show._id} event={show} />
         ))}
       </div> 
 

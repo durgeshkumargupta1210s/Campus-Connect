@@ -37,7 +37,7 @@ const Navbar = () => {
           ${isOpen ? "max-md:translate-x-0" : "max-md:-translate-x-full"}
         `}
       >
-        {/* Close icon(X) inside mobile menu */}
+        {/* Close icon inside mobile menu */}
         <XIcon
           className="md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer"
           aria-label="Close menu"
@@ -80,7 +80,7 @@ const Navbar = () => {
           <UserButton>
             <UserButton.MenuItems>
 
-              {/* FIXED: `onClick` must be lowercase */}
+              {/* ✅ FIXED: `onClick` must be lowercase */}
               <UserButton.Action
                 label="My Bookings"
                 labelIcon={<TicketPlus width={15} />}
