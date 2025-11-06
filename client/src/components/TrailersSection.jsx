@@ -8,6 +8,9 @@ import { dummyTrailers } from "../assets/assets";
 const TrailersSection = () => {
   const [currentTrailer, setCurrentTrailer] = useState(dummyTrailers[0]);
 
+  console.log(currentTrailer);
+  
+
   return (
     <div className="px-6 md:px-16 lg:px-24 xl:px-44 py-20 overflow-hidden">
       {/* Section Heading */}
