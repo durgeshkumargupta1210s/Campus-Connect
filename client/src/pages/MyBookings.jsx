@@ -1,64 +1,81 @@
-import React, { useEffect, useState } from 'react'
-import { dummyBookingData } from '../assets/assets'
-import Loading from '../components/Loading'
-import BlueCircle from '../components/BlueCircle'
-import timeFormat from '../lib/timeFormat'
-import dateFormat from '../lib/dateFormat'
+import React, { useEffect, useState } from "react";
+import Loading from "../components/Loading";
+import BlueCircle from "../components/BlueCircle";
+import dateFormat from "../lib/dateFormat";
+import api from "../lib/api";
+import { useUser } from "@clerk/clerk-react";
 
 const MyBookings = () => {
-  const currency = import.meta.env.VITE_CURRENCY
+  const currency = import.meta.env.VITE_CURRENCY;
+  const { user } = useUser();
 
-  const [bookings, setBookings] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getMyBookings = async () => {
-    setBookings(dummyBookingData)
-    setIsLoading(false)
-  }
+    try {
+      const email = user?.primaryEmailAddress?.emailAddress;
+      const query = email ? `?email=${encodeURIComponent(email)}` : "";
+      const res = await api.get(`/bookings${query}`);
+      setBookings(res.data || []);
+    } catch (err) {
+      console.error("Failed to load bookings:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    getMyBookings()
-  }, [])
+    getMyBookings();
+  }, [user]);
 
-  return !isLoading ? (
-    <div className="relative px-6 md:px-16 lg:px-40 pt-[120px] md:pt-[160px] min-h-[80vh]">
-      {/* Decorative Circles */}
-      <BlueCircle top="100px" left="100px" />
-      <div>
-        <BlueCircle bottom="0px" left="600px" />
-      </div>
-      <h1 className="text-lg font-semibold mb-6">My Bookings</h1>
+  if (isLoading) return <Loading />;
 
-      {bookings.map((item,index)=>(
-        <div  key={index} className='flex flec-col md:flex-row justify-between bg-primary/8 border border-primary/20 rounded-lg mt-4 p-2 max-w-3xl'>
-          <div className='flex flex-col md:flex-row'>
-            <img src={item.show.movie.poster_path} alt="" className='md:max-w-45 aspect-video h-auto object-bottom rounded' />
-            <div className='flex flex-col p-4'>
-              <p className='text-lg font-semibold'>{item.show.movie.title}</p>
-              <p className='text-grey-400 text-sm'>{timeFormat(item.show.movie.runtime)}</p>
-              <p className='text-gray-400 text-sm mt-auto'>{dateFormat(item.show.showDateTime)}</p>
+  return bookings.length > 0 ? (
+    <div className="relative my-24 px-6 md:px-16 lg:px-40 xl:px-44 min-h-[80vh]">
+      <BlueCircle top="150px" left="0px" />
+      <BlueCircle bottom="50px" right="50px" />
+
+      <h1 className="text-lg font-medium my-4">My Bookings</h1>
+
+      {bookings.map((item) => (
+        <div
+          key={item._id}
+          className="border border-gray-700 rounded-lg p-4 mb-4"
+        >
+          <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-semibold">
+                {item.event?.title || "Event"}
+              </h2>
+              <p className="text-gray-400">
+                {dateFormat(item.date)} •{" "}
+                {new Date(item.time).toLocaleTimeString("en-IN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+              <p className="text-gray-400">
+                Seat Number: {item.bookedSeats.join(", ")}
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="font-semibold">
+                {currency} {item.amount}
+              </p>
+              <p className="text-gray-400 text-sm">
+                Status: {item.isPaid ? "Paid" : "Unpaid"}
+              </p>
             </div>
           </div>
-
-          <div className='flex flex-col md:items-end md:text-right justify-between p-4'>
-
-            <div className='flex items-center gap-4'>
-              <p className='text-2xl font-semibold mb-3'>{currency}{item.amount}</p>
-              {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer'>Pay Now</button>}
-            </div>
-            <div className='text-sm'>
-              <p><span className='text-gray-400'>Total Tickets:</span>{item.bookedSeats.length}</p>
-              <p><span className='text-gray-400'>Seat Number:</span>{item.bookedSeats.join(", ")}</p>
-
-            </div>
-          </div>
-
         </div>
       ))}
     </div>
   ) : (
-    <Loading />
-  )
-}
+    <div className="flex items-center justify-center h-[60vh]">
+      <p>No bookings found</p>
+    </div>
+  );
+};
 
-export default MyBookings
+export default MyBookings;
