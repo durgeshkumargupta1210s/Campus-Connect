@@ -1,30 +1,76 @@
-import express from 'express'
-import cors from 'cors'
-import 'dotenv/config';
-import connectDB from './configs/db.js';
-import { clerkMiddleware } from '@clerk/express'
-import {serve} from "inngest/express"
-import { functions, inngest } from './inngest/index.js';
+// server/server.js
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
+import connectDB from "./configs/db.js";
+import eventRoutes from "./routes/eventRoutes.js";
+import showRoutes from "./routes/showRoutes.js";
+import bookingRoutes from "./routes/bookingRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
+const app = express();
+const port = process.env.PORT || 3000;
 
-const app=express()
-const port=3000;
+// middleware (before routes)
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    credentials: true,
+  })
+);
+app.use(express.json());
 
-await connectDB()
+// health check
+app.get("/", (_req, res) => {
+  res.send("CampusConnect server is live!");
+});
 
-// middleware
-app.use(express.json())
-app.use(cors())
-app.use(clerkMiddleware())
+// test route for debugging
+app.get("/test", (_req, res) => {
+  res.json({ message: "Test endpoint working", timestamp: new Date() });
+});
 
+// routes
+app.use("/api/events", eventRoutes);
+app.use("/api/shows", showRoutes);
+app.use("/api/bookings", bookingRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/admin", adminRoutes);
 
-// Api routes
-app.get('/', (req, res)=>{
-     res.send("server is live!")
-})
-app.use('/api/inngest',serve({client:inngest, functions}))
+// 404 handler
+app.use((_req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
 
+// Error handling middleware
+app.use((err, _req, res, _next) => {
+  console.error("Server error:", err);
+  res.status(500).json({ 
+    error: "Internal server error", 
+    message: err.message 
+  });
+});
 
-app.listen(port, (req, res)=>{
-     console.log(`Server connected at http://localhost:${port}`);
-})
+// Start server with proper async handling
+(async () => {
+  try {
+    // Try to connect to database
+    await connectDB();
+    console.log('✅ Database initialization complete');
+  } catch (dbError) {
+    console.log('⚠️ Database error during startup (server will continue to run)');
+  }
+
+  app.listen(port, () => {
+    console.log(`\n🚀 Server is running at http://localhost:${port}`);
+    console.log(`📝 API Base URL: http://localhost:${port}/api`);
+    console.log(`✅ Test endpoint: http://localhost:${port}/test`);
+    console.log(`\nRoutes available:`);
+    console.log(`  - GET  http://localhost:${port}/api/events`);
+    console.log(`  - GET  http://localhost:${port}/api/shows`);
+    console.log(`  - GET  http://localhost:${port}/api/bookings`);
+    console.log(`  - GET  http://localhost:${port}/api/users`);
+    console.log(`  - GET  http://localhost:${port}/api/admin/dashboard/stats\n`);
+  });
+})();
