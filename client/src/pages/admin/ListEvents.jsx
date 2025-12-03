@@ -1,67 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import { dummyShowsData } from '../../assets/assets';
-import Loading from '../../components/Loading';
-import Title from '../../components/admin/Title';
-import dateFormat from '../../lib/dateFormat';
+import React, { useEffect, useState } from "react";
+import Loading from "../../components/Loading";
+import Title from "../../components/admin/Title";
+import api from "../../lib/api";
 
 const ListEvents = () => {
-  const currency=import.meta.env.VITE_CURRENCY
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [shows,setShows]=useState([]);
-  const [loading,setLoading]=useState(true);
-
-  const getAllShows= async()=>{
-    try{
-      setShows([{
-        movie:dummyShowsData[0],
-        showDateTime:"2025-06-30T02:30:00.000Z",
-        showPrice:59,
-        occupiedSeats:{
-          A1:"user-1",
-          B1:"user_2",
-          c1:"user_3"
-        }
-      }]);
+  const getAllEvents = async () => {
+    try {
+      const res = await api.get("/events");
+      setEvents(res.data || []);
+    } catch (err) {
+      console.error("Failed to load events:", err);
+    } finally {
       setLoading(false);
     }
-    catch(error){
-      console.log(error);
-    }
-  }
+  };
 
-  useEffect(()=>{
-    getAllShows();
-  },[]);
-
+  useEffect(() => {
+    getAllEvents();
+  }, []);
 
   return !loading ? (
     <>
-       <Title text1="List" text2="Events"/> 
-       <div className="max-w-4xl mt-6 overflow-x-auto">
+      <Title text1="List" text2="Events" />
+      <div className="max-w-4xl mt-6 overflow-x-auto">
         <table className="w-full border-collapse rounded-md overflow-hidden text-nowrap">
-            <thead>
-              <tr className="bg-primary/20 text-left text-white">
-                <th className="p-2 font-medium pl-5">Event Name</th>
-                <th className="p-2 font-medium">Show Time</th>
-                <th className="p-2 font-medium">Total Bookings</th>
-                <th className="p-2 font-medium">Earnings</th>
+          <thead>
+            <tr className="bg-primary/20 text-left text-white">
+              <th className="p-2 font-medium pl-5">Event Name</th>
+              <th className="p-2 font-medium">Date</th>
+              <th className="p-2 font-medium">Runtime</th>
+              <th className="p-2 font-medium">Rating</th>
+            </tr>
+          </thead>
+          <tbody className="text-sm">
+            {events.map((event) => (
+              <tr key={event._id} className="border-b border-gray-700/60">
+                <td className="p-2 min-w-45 pl-5">{event.title}</td>
+                <td className="p-2">
+                  {event.release_date || "Not set"}
+                </td>
+                <td className="p-2">
+                  {event.runtime ? `${event.runtime} min` : "NA"}
+                </td>
+                <td className="p-2">
+                  {typeof event.vote_average === "number"
+                    ? event.vote_average.toFixed(1)
+                    : "NA"}
+                </td>
               </tr>
-            </thead>
-            <tbody className="text-sm font-light">
-              {shows.map((show,index)=>(
-                <tr key={index} className="border-b border-primary/20 bg-primary/5 even:bg-primary/10">
-                  <td className="p-2 min-w-45 pl-5">{show.movie.title}
-                  </td>
-                  <td className="p-2">{dateFormat(show.showDateTime)}</td>
-                  <td className="p-2">{Object.keys(show.occupiedSeats).length}</td>
-                  <td className="p-2">{currency} {Object.keys(show.occupiedSeats).length *show.showPrice}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div> 
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
-  ) :<Loading/>
-}
+  ) : (
+    <Loading />
+  );
+};
 
-export default ListEvents
+export default ListEvents;
